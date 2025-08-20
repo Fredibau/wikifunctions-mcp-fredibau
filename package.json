@@ -1,0 +1,28 @@
+{
+  "name": "wikifunctions-mcp",
+  "version": "1.0.0",
+  "description": "An MCP server for interacting with WikiFunctions.",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "wikifunctions-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "axios": "^1.7.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
