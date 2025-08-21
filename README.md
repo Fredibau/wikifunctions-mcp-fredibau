@@ -6,7 +6,7 @@ This server exposes the functionality of WikiFunctions through the Model Context
 
 ## Quick Start
 
-For MCP-compatible tools like Claude-Desktop or Cursor, you can enable this server by simply adding it to your `mcp.json` configuration file. The tool should handle the installation automatically.
+For MCP-compatible tools like Claude-Desktop or Cursor, you can enable this server by simply adding it to your `mcp.json` configuration file. 
 
 ```json
 {
