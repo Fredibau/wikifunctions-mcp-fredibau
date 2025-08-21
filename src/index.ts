@@ -303,7 +303,7 @@ server.tool(
   },
   async ({ search_query }) => {
     try {
-      console.log(`Searching for code for query: "${search_query}"`);
+      console.error(`Searching for code for query: "${search_query}"`);
       
       // Step 1: Find functions.
       const functionsResponse = await findFunctions(search_query);
@@ -319,26 +319,26 @@ server.tool(
       for (const func of functionsResponse) {
         const functionId = func.page_title;
         const label = func.label || 'N/A';
-        console.log(`--- Checking function: ${functionId} (${label}) ---`);
+        console.error(`--- Checking function: ${functionId} (${label}) ---`);
 
         const functionData = await getFunctionDetails(functionId);
         if (!functionData) {
-            console.log(`Could not retrieve details for function ${functionId}.`);
+            console.error(`Could not retrieve details for function ${functionId}.`);
             continue;
         }
 
         const implementations = getImplementations(functionData);
         if (implementations.length === 0) {
-            console.log(`No implementations found for function ${functionId}.`);
+            console.error(`No implementations found for function ${functionId}.`);
             continue;
         }
 
         // Step 3: Iterate through implementations.
         for (const implId of implementations) {
-            console.log(`  Checking implementation: ${implId}...`);
+            console.error(`  Checking implementation: ${implId}...`);
             const code = await getCode(implId);
             if (code) {
-                console.log(`  SUCCESS: Found code in implementation ${implId}`);
+                console.error(`  SUCCESS: Found code in implementation ${implId}`);
                 return {
                     content: [
                         { type: "text", text: `\`\`\`\n${code}\n\`\`\`` },
@@ -347,7 +347,7 @@ server.tool(
                 };
             }
         }
-        console.log(`No code found in any implementations for function ${functionId}.`);
+        console.error(`No code found in any implementations for function ${functionId}.`);
       }
       
       return {
@@ -375,7 +375,7 @@ server.tool(
   },
   async ({ search_query }) => {
     try {
-      console.log(`Searching for template for query: "${search_query}"`);
+      console.error(`Searching for template for query: "${search_query}"`);
 
       // Step 1: Find functions.
       const functionsResponse = await findFunctions(search_query);
@@ -395,11 +395,11 @@ server.tool(
       for (const func of functionsResponse) {
         const functionId = func.page_title;
         const label = func.label || "N/A";
-        console.log(`--- Building template for function: ${functionId} (${label}) ---`);
+        console.error(`--- Building template for function: ${functionId} (${label}) ---`);
 
         const functionData = await getFunctionDetails(functionId);
         if (!functionData) {
-          console.log(`Could not retrieve details for function ${functionId}.`);
+          console.error(`Could not retrieve details for function ${functionId}.`);
           continue;
         }
 

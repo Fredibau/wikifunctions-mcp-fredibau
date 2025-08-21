@@ -1,11 +1,11 @@
 {
-  "name": "wikifunctions-mcp",
+  "name": "fredibau-wikifunctions-mcp",
   "version": "1.0.0",
   "description": "An MCP server for interacting with WikiFunctions.",
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "wikifunctions-mcp": "./build/index.js"
+    "fredibau-wikifunctions-mcp": "./build/index.js"
   },
   "scripts": {
     "build": "tsc",
